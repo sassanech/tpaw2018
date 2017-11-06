@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="div.css" />
+        <script type="text/javascript" src="formulaire.js"></script>
+        <title>TP2 : Un formulaire</title>
+    </head>
+
+    <body>
+        <h1>Saisie d'une fiche "Personne"</h1>
+
+            <form id ="myform" method="post" action="formulaire.js">
+                <table>
+                    <tr>
+                        <td><label for="nom">Nom</label></td>
+                        <td><input type="text" name="nom" id="nom" minlength="5" maxlength="20"/></td>
+                    </tr>  
+
+                    <tr>
+                        <td><label for="prenom">Prénom</label></td>
+                        <td><input type="text" name="prenom" id="prenom" minlength="5" maxlength="20"/></td>
+                    </tr>
+
+                    <tr>
+                        <td><label for="date">Date de naissance</label></td>
+                        <td><input type="date" name="date" id="date" style="Text-ALIGN:center"/></td>
+                    </tr>
+
+                    <tr>
+                        <td><label for="adresse">Adresse</label></td>
+                        <td><input type="text" name="adresse" id="adresse" minlength="5" maxlength="50"/></td>
+                    </tr>
+                            
+                    <tr>
+                        <td><label for="mail">Mail</label></td>
+                        <td><input type="email" name="mail" id="mail" minlength="5" maxlength="30"/></td>
+                    </tr>   
+
+                    <tr>
+                        <td></td>
+                        <td><input type="button" value="Valider" onclick="validation()"/></td>
+                    </tr>
+                </table>
+            </form>
+            
+            <div id="error" hidden></div>
+            <div id="resultat" hidden></div>
+    </body>
+
+</html>
