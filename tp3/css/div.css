@@ -1,0 +1,21 @@
+body{
+    background-color: rgb(153, 152, 152);
+}
+
+h1{
+    text-align: center;
+}
+
+#myform{
+    background-color: white;
+}
+
+input[type="text"], input[type="date"], input[type="email"] {
+    width: 300px;
+}
+
+form{
+    margin: auto;
+    padding-top: 15px;
+    padding-left: 25px;
+}
