@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <title>Formulaire v2</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/div.css">
+        <link rel="stylesheet" href="css/jquery-ui.css"> 
+          
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <script src="js/store.js"></script>
+        <script src="js/gps.js"></script>
+        <script src="js/form-jquery-validation.js"></script>
+        <script src="js/jquery-ui.js"></script>
+      
+        <script>
+            $( function() {
+                $( "#date" ).datepicker({maxDate: '0', dateFormat: "dd/mm/yy"});
+            } );
+            </script>
+    </head>
+
+
+    <body>
+
+        <h1> Saisie d'une fiche Personne </h1>
+            <div class="container">
+                <form id="myform" method="post">
+
+                    <div class="form-group row">
+                        <label for="nom" class="col-sm-2 col-form-label">Nom</label>
+                        <div class="col-sm-8">
+                          <input type="text" class="form-control" id="nom" placeholder="Nom" minlength="5" maxlength="20"/>
+                        </div>
+                        <div class="col-sm-2" id="nom-alert"></div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="prenom" class="col-sm-2 col-form-label">Prénom</label>
+                        <div class="col-sm-8">
+                          <input type="text" class="form-control" id="prenom" placeholder="Prénom" minlength="5" maxlength="20"/>
+                        </div>
+                        <div class="col-sm-2" id="nom-alert2"></div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="date" class="col-sm-2 col-form-label">Date de naissance</label>
+                        <div class="col-sm-8">
+                          <input type="text" class="dateDeNaissance" id="date" placeholder="JJ/MM/AAAA" onchange="validerdate()"/>
+                        </div>
+                        <div class="col-sm-2" id="nom-alert3"></div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="adresse" class="col-sm-2 col-form-label">Adresse</label>
+                        <div class="col-sm-3">
+                          <input type="text" class="form-control" id="adresse" placeholder="Adresse" minlength="5" maxlength="20"/>
+                        </div>
+                        <div class="form-group col-sm-5">
+                            <button class="btn btn-warning" type="button" id="gps" onclick="setTimeout(getLocation, 1000)">📍 GPS</button>
+                        </div>
+                        <div class="col-sm-2" id="nom-alert4"></div>
+                        <div id="map"></div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="email" class="col-sm-2 col-form-label">Email</label>
+                        <div class="col-sm-8">
+                          <input type="email" class="form-control" id="email" placeholder="Email" minlength="5" maxlength="25"/>
+                        </div>
+                        <div class="col-sm-2" id="nom-alert5"></div>
+                    </div>                    
+
+                    <div class="form-group row">
+                        <label for="bouton" class="col-sm-2 col-form-label"></label>
+                        <div class="col-sm-8">
+                            <button type="submit" class="btn btn-info btn-lg" id="bouton">Ajouter</button>
+                        </div>
+                    </div> 
+                    <div id="resultat" class="alert alert-success col-sm-8" role="alert" hidden></div>
+
+                    <div class="container">
+                        <!-- Modal -->
+                            <div class="modal fade" id="myModal" role="dialog">
+                                <div class="modal-dialog">
+                                
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title" id="mtitre">Message d'erreur</h4>
+                                    </div>
+
+                                    <div class="modal-body">
+                                        <p>Some text in the modal.</p>         
+                                    </div>                
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal" id="boutonmodal">OK</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </form>
+
+                <h4 id="titre" hidden>Liste des contacts</h4>
+                
+                        <table id="table" class="table table-striped table-hover table-bordered" hidden>
+                            <thead>
+                                <tr>
+                                    <th>Nom</th>
+                                    <th>Prénom</th>
+                                    <th>Date de naissance</th>
+                                    <th>Adresse</th>
+                                    <th>Mail</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>oConnor</td>
+                                    <td>Sarah</td>
+                                    <td>21/01/2000</td>
+                                    <td>
+                                        <a href="https://maps.google.com/?q=Paris">Paris</a>
+                                    </td>
+                                    <td>
+                                        <a href="mailto:sarah.oconnor@blabla.com">sarah.oconnor@blabla.com</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Vandamme</td>
+                                    <td>JL</td>
+                                    <td>01/01/1950</td>
+                                    <td>
+                                        <a href="https://maps.google.com/?q=Bali">Bali</a>
+                                    </td>
+                                    <td>
+                                        <a href="mailto:jlv@blabla.com">jlv@blabla.com</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+            </div>
+        </body>
+</html>
