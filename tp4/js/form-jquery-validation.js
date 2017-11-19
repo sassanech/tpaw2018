@@ -128,15 +128,6 @@ function mypopup(){
     mymodal.modal('show');
 }
 
-/*function myMap() {
-    var mapOptions = {
-        center: new google.maps.LatLng(51.508742,-0.120850),
-        zoom: 9,         
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-    var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-}*/
-
 function validerdate(){
     var dateN = document.getElementById("date").value;
 
